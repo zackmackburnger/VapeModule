@@ -3325,15 +3325,15 @@ runFunction(function()
 		oldcloneroot = nil
 	end
 
-	InfiniteFly = GuiLibrary.ObjectsThatCanBeSaved.BlatantWindow.Api.CreateOptionsButton({
-		Name = "InfiniteFly",
+	DisableVoidKill = GuiLibrary.ObjectsThatCanBeSaved.BlatantWindow.Api.CreateOptionsButton({
+		Name = "DisableVoidKill",
 		Function = function(callback)
 			if callback then
 				if not entityLibrary.isAlive then 
 					disabledproper = true
 				end
 				if not disabledproper then 
-					warningNotification("InfiniteFly", "Wait for the last fly to finish", 3)
+					warningNotification("DisableVoidKill", "Wait for the last enable finish", 3)
 					InfiniteFly.ToggleButton(false)
 					return 
 				end
@@ -3475,7 +3475,7 @@ runFunction(function()
 					entityLibrary.character.Humanoid:ChangeState(Enum.HumanoidStateType.Landed)
 					disabledproper = false
 					if isnetworkowner(oldcloneroot) then 
-						warningNotification("InfiniteFly", "Waiting 1.5s to not flag", 3)
+						warningNotification("InfiniteFly", "You jumped so you died, wait 1.5 seconds till next turn", 3)
 						task.delay(1.5, disablefunc)
 					else
 						disablefunc()
@@ -3485,7 +3485,7 @@ runFunction(function()
 				InfiniteFlyDown = false
 			end
 		end,
-		HoverText = "Teleports you to the air",
+		HoverText = "Jump down the void and don't jump to enable",
 		ExtraText = function()
 			return "Heatseeker"
 		end
